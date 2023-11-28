@@ -1,0 +1,50 @@
+body {
+    background-color: #222;
+}
+
+.carousel {
+    width: 700px;
+    height: 500px;
+    margin: 5vh auto;
+    position: relative;
+    background-color: #333;
+}
+
+.carousel .slide {
+    width: 650px;
+    height: 450px;
+    border: 10px solid transparent;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 1s;
+}
+
+.carousel .slide .sq {
+    width: 48px;
+    height: 48px;
+    border: 1px solid transparent;
+    position: absolute;
+}
+
+.btn {
+    width: 50px;
+    height: 50px;
+    font-size: 40px;
+    border-radius: 100%;
+    cursor: pointer;
+    background-color: transparent;
+    border-color: transparent;
+    position: absolute;
+    top: 40%;
+    transition: 1.5s;
+}
+
+.btn-next {
+    right: 15vw;
+}
+
+.btn-prev {
+    left: 15vw;
+}
