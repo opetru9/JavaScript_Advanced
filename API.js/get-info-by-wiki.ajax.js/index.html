@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get info by wiki</title>
+    <style>
+        body{
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="letters">
+        <a href=""> A- </a>
+        <a href=""> B- </a>
+        <a href=""> C- </a>
+        <a href=""> D- </a>
+        <a href=""> E- </a>
+        <a href=""> F- </a>
+        <a href=""> G- </a>
+        <a href=""> H- </a>
+        <a href=""> I- </a>
+        <a href=""> J- </a>
+        <a href=""> K- </a>
+        <a href=""> L- </a>
+        <a href=""> M- </a>
+        <a href=""> N- </a>
+        <a href=""> O- </a>
+        <a href=""> P- </a>
+        <a href=""> Q- </a>
+        <a href=""> R- </a>
+        <a href=""> S- </a>
+        <a href=""> T- </a>
+        <a href=""> V- </a>
+        <a href=""> W- </a>
+        <a href=""> X- </a>
+        <a href=""> Y- </a>
+        <a href=""> Z </a>
+    </div> -->
+
+    <div >
+        <table style="border:1px solid #fff;" id="column"></table>
+    </div>
+
+    <script>
+
+        const url = "https://en.wikipedia.org/wiki/List_of_programming_languages"
+        let xhr = new XMLHttpRequest()
+
+        function loadPage(){
+            xhr.open("GET",url)
+            xhr.send()
+        }
+        loadPage()
+        xhr.onload =  function hi()  {
+            // parsing
+            let html    = xhr.responseText
+            let parser  = new DOMParser()
+            let htmlDoc = parser.parseFromString(html , "text/html")
+
+            // traverse the DOM structure
+            let AllDivs   = htmlDoc.querySelectorAll("div.div-col")
+            let div       = AllDivs[0]
+            let lis       = div.firstElementChild.children
+            let languages = []
+            
+            for (let i = 0 ; i<lis.length;i++){
+                languages.push(lis[i].firstElementChild.innerText)
+                column.innerHTML += `
+                    <tr>
+                        <td style="border-bottom:1px solid #fff;color:#fff">${languages[i]}</td>
+                    </tr>
+                ` 
+            }
+            }
+            // let a = document.querySelector(".letters a:nth-child(1)")
+            // a.addEventListener("click",()=>{
+            //     alert("h")
+            // })
+
+
+            
+    </script>
+</body>
+</html>
