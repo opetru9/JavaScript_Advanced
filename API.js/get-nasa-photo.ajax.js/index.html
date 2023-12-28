@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Glider.js-master/glider.css">
+    <title>GET NASA photos | AJAX</title>
+    <style>
+        body{
+            background-color: #012;
+            color: #f5f5f5;
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: url(universe-2218012_1280.jpg) ;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        #gallery{
+            width: 90vw;
+            margin: 3% auto;
+        }
+        #gallery .glider div{
+            height: 600px;
+            text-align: center;
+        }
+        #gallery .glider h2,h3{
+            letter-spacing: 0.8px;
+        }
+        #gallery .glider img{
+            display: inline-block;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+        }
+        #gallery  .op_btn{
+            display: none;
+        }
+        .label{
+            display:block;
+            width: 400px;
+            height: 50px;
+            margin: 40vh auto;
+            /* border: 1px solid red; */
+        }
+        .label .input{
+            width: 70%;
+            height: 100%;
+            outline-color: #012;
+            transform: translateY(-1.5px);
+        }
+        .label #load_btn{
+            width: 25%;
+            height: 106%;
+            cursor: pointer;
+            background-color: #012;
+            border-color: transparent;
+            border-radius:0  100px 100px 0;
+            font-size: 20px;
+            font-weight: 600;
+            color:#f5f5f5;
+            margin: 3px 0 0 -3px ;
+            padding-right: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <form class="label">
+        <input type="date" class="input" required autofocus>
+        <button id="load_btn">Load</button>
+    </form>
+
+
+    <div id="gallery">
+        <div class="glider-contain" id="gliderContain">
+            <div class="glider"></div>
+            <button aria-label="Previous" class="glider-prev op_btn">«</button>
+            <button aria-label="Next" class="glider-next op_btn">»</button>
+            <div role="tablist" class="dots"></div> 
+        </div>
+    </div>
+
+    
+    <script>
+        const myApiKey = "fFP2ZxNb0suz6mIdcMBH0Yi1fTZyZubotGJ97aab";
+        const formElement = document.querySelector('.label')
+        formElement.addEventListener('submit', (e)=>{
+            e.preventDefault()
+            loadMarsRoverPhotoData()
+        } );
+
+        function loadMarsRoverPhotoData(){
+            const inputElement = document.querySelector('.label .input')
+            let inputValue = inputElement.value
+            const ApiMarsRover = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?page=1&api_key=${myApiKey}&earth_date=${inputValue}`
+
+            let xhr = new XMLHttpRequest()
+            xhr.open("GET", ApiMarsRover)
+            xhr.send()
+            xhr.onload = parseRoverPhotoData
+        }
+
+        function parseRoverPhotoData(e){
+            let xhr = e.target
+            let data = JSON.parse(xhr.responseText)
+            formElement.style.display = "none"
+            createGliderDOM(data)
+        }
+
+        function createGliderDOM(data){
+            let slidesContainer = document.querySelector('#gallery .glider')
+            let buttons = document.querySelectorAll('.op_btn')
+            buttons.forEach((button) => button.style.display = 'inline-block');
+                
+            data.photos.forEach( photo => {
+                let div = document.createElement('div')
+                div.appendChild( document.createElement('img'))
+                div.firstElementChild.src = photo.img_src
+                div.appendChild(document.createElement('h2'))
+                div.lastElementChild.innerText = photo.earth_date
+                div.appendChild(document.createElement('h3'))
+                div.lastElementChild.innerText = photo.camera.full_name
+                slidesContainer.appendChild(div)
+
+            })
+            
+            newGlider()
+
+        }
+        function newGlider(){
+            new Glider(document.querySelector('.glider'), {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                draggable: true,
+                dots: '.dots',
+                arrows: {
+                    prev: '.glider-prev',
+                    next: '.glider-next'
+                }
+        })
+        }
+    </script>
+    <script src="Glider.js-master/glider.js"></script>
+</body>
+</html>
