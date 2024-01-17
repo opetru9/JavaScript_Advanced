@@ -1,0 +1,134 @@
+.radar {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    border: 10px solid #555;
+    position: relative;
+    bottom: 50px;
+    background-color: #252525;
+    transform: scale(0.5);
+}
+
+.radar::before {
+    content: '';
+    display: block;
+    width: 180px;
+    height: 180px;
+    border-radius: 100%;
+    border: 10px solid #252525;
+    position: absolute;
+    z-index: 10;
+}
+
+.radar::after {
+    content: '';
+    display: block;
+    width: 178px;
+    height: 178px;
+    border-radius: 100%;
+    border: 2px solid rgb(64, 153, 5);
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 11;
+}
+
+.v-line {
+    height: 178px;
+    width: 2px;
+    background-color: rgb(64, 153, 5);
+    position: absolute;
+    top: 12px;
+    left: 50%;
+}
+
+.v-line::before {
+    content: '';
+    display: block;
+    height: 178px;
+    width: 2px;
+    background-color: rgb(64, 153, 5);
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: rotate(45deg);
+}
+
+.v-line::after {
+    content: '';
+    display: block;
+    height: 178px;
+    width: 2px;
+    background-color: rgb(64, 153, 5);
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: rotate(-45deg);
+}
+
+.h-line {
+    width: 178px;
+    height: 2px;
+    background-color: rgb(64, 153, 5);
+    position: absolute;
+    top: 50%;
+    left: 12px;
+}
+
+.h-line::before {
+    content: '';
+    display: block;
+    width: 128px;
+    height: 128px;
+    border-radius: 100%;
+    border: 2px solid rgb(64, 153, 5);
+    position: absolute;
+    top: -65px;
+    left: 24px;
+}
+
+.h-line::after {
+    content: '';
+    display: block;
+    width: 58px;
+    height: 58px;
+    border-radius: 100%;
+    border: 2px solid rgb(64, 153, 5);
+    position: absolute;
+    top: -30px;
+    left: 59px;
+}
+
+.animate-line {
+    height: 50px;
+    width: 15px;
+    border-right: 2px solid rgb(64, 153, 5);
+    background-image: linear-gradient(-100deg, rgb(64, 153, 5), transparent 50%);
+    position: absolute;
+    bottom: 10vh;
+    left: 6.8vw;
+    z-index: 5;
+    transform-origin: right bottom;
+    transform: scale(0.2);
+    animation: radar-animation 3s linear infinite;
+}
+.object-on-radar{
+    position: absolute;
+    left: 137px;
+    top: 82px;
+    display: inline-block;
+    width: 20px;
+    height: 10px;
+    background-color: rgb(64, 153, 5);
+    border-radius: 50%;
+    z-index: 99;
+}
+@keyframes radar-animation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
