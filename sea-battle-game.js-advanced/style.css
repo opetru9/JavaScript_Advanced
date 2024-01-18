@@ -1,0 +1,84 @@
+.wave:nth-of-type(1) {
+  z-index: 90;
+  transform: translateZ(-50px);
+  filter: brightness(95%) blur(0.2px);
+  animation-delay: 2.8344342339;
+}
+
+.wave:nth-of-type(2) {
+  z-index: 80;
+  transform: translateZ(-100px);
+  filter: brightness(90%) blur(0.4px);
+  animation-delay: 3.9878984148;
+}
+
+.wave:nth-of-type(3) {
+  z-index: 70;
+  transform: translateZ(-150px);
+  filter: brightness(85%) blur(0.6px);
+  animation-delay: 2.0991846685;
+}
+
+.wave:nth-of-type(4) {
+  z-index: 60;
+  transform: translateZ(-200px);
+  filter: brightness(80%) blur(0.8px);
+  animation-delay: 4.4136473174;
+}
+
+.wave:nth-of-type(5) {
+  z-index: 50;
+  transform: translateZ(-250px);
+  filter: brightness(75%) blur(1px);
+  animation-delay: 3.6427830452;
+}
+
+.wave:nth-of-type(6) {
+  z-index: 40;
+  transform: translateZ(-300px);
+  filter: brightness(70%) blur(1.2px);
+  animation-delay: 4.7313646869;
+}
+
+.wave:nth-of-type(7) {
+  z-index: 30;
+  transform: translateZ(-350px);
+  filter: brightness(65%) blur(1.4px);
+  animation-delay: 2.4090555611;
+}
+
+.wave:nth-of-type(8) {
+  z-index: 20;
+  transform: translateZ(-400px);
+  filter: brightness(60%) blur(1.6px);
+  animation-delay: 1.1879774073;
+}
+
+.wave:nth-of-type(9) {
+  z-index: 10;
+  transform: translateZ(-450px);
+  filter: brightness(55%) blur(1.8px);
+  animation-delay: 0.2804990646;
+}
+
+.wave:nth-of-type(10) {
+  z-index: 0;
+  transform: translateZ(-500px);
+  filter: brightness(50%) blur(2px);
+  animation-delay: 1.3486150643;
+}
+
+@keyframes waves {
+  0% {
+    left: -50%;
+  }
+  33% {
+    left: -47%;
+  }
+  66% {
+    left: -49%;
+  }
+  100% {
+    left: -50%;
+  }
+}/*# sourceMappingURL=style.css.map */
