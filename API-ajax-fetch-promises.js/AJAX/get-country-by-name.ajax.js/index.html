@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get country</title>
+    <style>
+        body{
+            background-color: #333;
+        }
+        #form-name{
+            width: 80vw;
+            margin: 10vh auto;
+            text-align: center;
+        }
+        #form-name label{
+            width: 20vw;
+            margin: 0 auto;
+        }
+        #form-name label input{
+            width: 20vw;
+            margin: 0 auto;
+            padding: 10px 20px;
+            outline: #012 solid 1px;
+            margin-top: 2%;
+        }
+        .output{
+            font-size: 30px;
+            margin-top: 25px;
+            color: #012;
+        }
+    </style>
+</head>
+<body>
+    <form id="form-name" action="">
+        <h1>This app tells you where are you from </h1>
+        <h2>Input your name bellow and hit ENTER</h2>
+
+        <label for=""> 
+            <input type="text" placeholder="your name" autofocus required>
+        </label>
+
+        <div class="output"> </div>
+    </form>
+
+    <script>
+        const form  = document.querySelector('#form-name') 
+        const input = form.children[2].firstElementChild
+        const output = document.querySelector('.output')
+        // const APIurl   = 'https://api.nationalize.io?name=petru'
+        
+
+        form.addEventListener('submit', (e)=> {
+            e.preventDefault()
+            let name = input.value
+            
+            // AJAX
+            const xhr = new XMLHttpRequest()
+            xhr.open('GET', `https://api.nationalize.io?name=${name}`)
+            xhr.send()
+
+            xhr.onload = () => {
+                let response = xhr.responseText
+                let data = JSON.parse(response)
+                let gg = data.country[0]
+                
+                if(data.country[0]){
+                    let mainNationality = data.country[0].country_id
+                    let mainProbability = data.country[0].probability
+                    let nationality     = data.country[1].country_id
+                    let probability     = data.country[1].probability
+                    output.innerHTML = `You are from <strong> ${mainNationality}<\strong> with ${mainProbability}% of probability
+                                            or ${nationality}<\strong> with ${probability}% of probability` 
+                }else{
+                    output.innerHTML = `Sorry, we don't have any information of this name `
+                }
+            }
+        })
+    </script>
+</body>
+</html>
