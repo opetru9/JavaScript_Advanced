@@ -1,0 +1,19 @@
+body{
+    background-color: #121;
+}
+#local-root{
+    border: 2px solid #999;
+    width: 80vw;
+    margin: 5vh auto;
+    color: #777;
+}
+#local-root > div , #local-root>div>div{
+    border: 1px solid #777;
+    padding: 15px;
+    width: 75%;
+    margin: 10px auto;
+}
+#local-root > div >div{
+    border: 1px solid #333;
+}
+
