@@ -1,0 +1,33 @@
+body{
+    background-color: #012;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #999999;
+}
+button{
+    background-color: green;
+    border-color: transparent;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.save_btn{
+    border-radius: 0 10px 10px 0;
+    padding-right: 10px;
+}
+header,
+section,
+footer{
+    border: 1px solid #333;
+    padding: 20px;
+    margin: 10px 0;
+}
+.data-table{
+    border: 1px solid #555;
+    border-collapse: collapse;
+}
+.data-table td{
+    border: 1px solid #777;
+    padding: 10px;
+}
+.data-table input{
+    width: 100px;
+}
